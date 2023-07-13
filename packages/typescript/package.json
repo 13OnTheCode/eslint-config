@@ -1,0 +1,65 @@
+{
+  "name": "@13onthecode/eslint-config-typescript",
+  "description": "ESLint shareable config for Typescript",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/13OnTheCode/eslint-config#readme",
+  "bugs": "https://github.com/13OnTheCode/eslint-config/issues",
+  "author": {
+    "name": "13OnTheCode",
+    "email": "13@ryongyon.com",
+    "url": "https://ryongyon.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/13OnTheCode/eslint-config.git",
+    "directory": "packages/typescript"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": "^16.0.0 || >=18.0.0"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "clean": "pnpm dlx rimraf node_modules dist"
+  },
+  "dependencies": {
+    "@13onthecode/eslint-config-javascript": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint-import-resolver-typescript": "^3.5.5"
+  },
+  "peerDependencies": {
+    "eslint": "^7.0.0 || ^8.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "CHANGELOG.md",
+    "README.md",
+    "README.CN.md"
+  ],
+  "unbuild": {
+    "rollup": {
+      "esbuild": {
+        "minify": true
+      }
+    }
+  }
+}

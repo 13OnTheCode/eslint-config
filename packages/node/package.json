@@ -1,0 +1,63 @@
+{
+  "name": "@13onthecode/eslint-config-node",
+  "description": "ESLint shareable config for Node.js",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/13OnTheCode/eslint-config#readme",
+  "bugs": "https://github.com/13OnTheCode/eslint-config/issues",
+  "author": {
+    "name": "13OnTheCode",
+    "email": "13@ryongyon.com",
+    "url": "https://ryongyon.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/13OnTheCode/eslint-config.git",
+    "directory": "packages/node"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "node"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": "^16.0.0 || >=18.0.0"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "clean": "pnpm dlx rimraf node_modules dist"
+  },
+  "dependencies": {
+    "eslint-import-resolver-node": "^0.3.7",
+    "globals": "^13.20.0"
+  },
+  "peerDependencies": {
+    "eslint": "^7.0.0 || ^8.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "CHANGELOG.md",
+    "README.md",
+    "README.CN.md"
+  ],
+  "unbuild": {
+    "rollup": {
+      "esbuild": {
+        "minify": true
+      }
+    }
+  }
+}
