@@ -174,7 +174,10 @@ const ESlintPluginPerfectionistRules = {
         'object',
         'unknown'
       ],
-      'internal-pattern': []
+      'internal-pattern': [
+        '~/**',
+        '@/**'
+      ]
     }
   ]
 }
