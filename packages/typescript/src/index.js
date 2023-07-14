@@ -1,21 +1,8 @@
-import { existsSync } from 'node:fs'
-import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 
 import ESlintConfigJavascript from '@13onthecode/eslint-config-javascript'
 import ESlintPluginTypescript from '@typescript-eslint/eslint-plugin'
 import ESlintParserTypescript from '@typescript-eslint/parser'
-
-const TSConfigPath = resolve(cwd(), 'tsconfig.json')
-
-if (!existsSync(TSConfigPath)) {
-  throw new Error(`TSConfig file not found. Please check if the file exists at the path: ${TSConfigPath}`)
-}
-
-const ESlintConfigJavascriptRules = {
-  ...ESlintConfigJavascript.rules,
-  'perfectionist/sort-imports': [2, { ...ESlintConfigJavascript.rules['perfectionist/sort-imports'][1], 'read-tsconfig': true }]
-}
 
 const cloneDeep = (obj) => {
   if (typeof obj !== 'object' || obj === null) {
@@ -35,7 +22,7 @@ const cloneDeep = (obj) => {
 
 const createESlintPluginTypescriptRules = () => {
   let sameRules = {}
-  let ESlintConfigJavascriptRulesClone = cloneDeep(ESlintConfigJavascriptRules)
+  let ESlintConfigJavascriptRulesClone = cloneDeep(ESlintConfigJavascript.rules)
   let ESlintConfigJavascriptRulesKeys = new Set(Object.keys(ESlintConfigJavascriptRulesClone))
 
   for (const key of Object.keys(ESlintPluginTypescript.rules)) {
@@ -86,7 +73,7 @@ export default {
         jsx: true
       },
       ecmaVersion: 'latest',
-      project: [TSConfigPath],
+      project: ['tsconfig.eslint.json'],
       tsconfigRootDir: cwd()
     }
   },
@@ -95,7 +82,7 @@ export default {
     '@typescript-eslint': ESlintPluginTypescript
   },
   rules: {
-    ...ESlintConfigJavascriptRules,
+    ...ESlintConfigJavascript.rules,
     ...ESlintPluginTypescriptRules
   },
   settings: {
@@ -103,9 +90,7 @@ export default {
       '@typescript-eslint/parser': ['.ts', '.mts', '.cts', '.tsx']
     },
     'import/resolver': {
-      typescript: {
-        project: [TSConfigPath]
-      }
+      typescript: true
     }
   }
 }
