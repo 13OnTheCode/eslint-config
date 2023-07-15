@@ -4,6 +4,20 @@ import ESlintConfigJavascript from '@13onthecode/eslint-config-javascript'
 import ESlintPluginTypescript from '@typescript-eslint/eslint-plugin'
 import ESlintParserTypescript from '@typescript-eslint/parser'
 
+const ESlintConfigJavascriptRules = {
+  ...ESlintConfigJavascript.rules,
+
+  // https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting#eslint-plugin-import
+  'import/default': 0,
+  'import/named': 0,
+  'import/namespace': 0,
+  'import/no-cycle': 0,
+  'import/no-deprecated': 0,
+  'import/no-named-as-default': 0,
+  'import/no-named-as-default-member': 0,
+  'import/no-unused-modules': 0
+}
+
 const cloneDeep = (obj) => {
   if (typeof obj !== 'object' || obj === null) {
     return obj
@@ -22,7 +36,7 @@ const cloneDeep = (obj) => {
 
 const createESlintPluginTypescriptRules = () => {
   let sameRules = {}
-  let ESlintConfigJavascriptRulesClone = cloneDeep(ESlintConfigJavascript.rules)
+  let ESlintConfigJavascriptRulesClone = cloneDeep(ESlintConfigJavascriptRules)
   let ESlintConfigJavascriptRulesKeys = new Set(Object.keys(ESlintConfigJavascriptRulesClone))
 
   for (const key of Object.keys(ESlintPluginTypescript.rules)) {
@@ -82,7 +96,7 @@ export default {
     '@typescript-eslint': ESlintPluginTypescript
   },
   rules: {
-    ...ESlintConfigJavascript.rules,
+    ...ESlintConfigJavascriptRules,
     ...ESlintPluginTypescriptRules
   },
   settings: {
