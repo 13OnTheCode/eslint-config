@@ -5,7 +5,6 @@ import ESlintPluginReactHooks from 'eslint-plugin-react-hooks'
 const ESlintPluginReactRules = {
   'react/boolean-prop-naming': 2,
   'react/button-has-type': 2,
-  'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
   'react/hook-use-state': [2, { allowDestructuredState: true }],
   'react/jsx-boolean-value': 2,
   'react/jsx-closing-bracket-location': 2,
