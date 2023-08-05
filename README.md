@@ -1,17 +1,15 @@
 <div align="center">
 
-<img src="https://camo.githubusercontent.com/3d3600855c97f9bb4d34030db7f975e5329e797d7e42e1563ad6c3647df86ce6/68747470733a2f2f6769746875622d70726f64756374696f6e2d757365722d61737365742d3632313064662e73332e616d617a6f6e6177732e636f6d2f353639383335302f3234313432363632392d66376533613562662d353066652d343963312d616437362d3938626433393134636433652e737667" width="100" height="100" alt="ESLint" />
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/137921275/258572401-482172f4-a813-41ae-9e42-d17176ae2893.svg" width="100" height="100" alt="ESLint" />
 
 # ESLint Config
 
-[![NPM version](https://img.shields.io/npm/v/@13onthecode/eslint-config?color=463abd&amp;label=)](https://www.npmjs.com/package/@13onthecode/eslint-config)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?color=463abd&amp;label=)](LICENSE.md)
+[![Version](https://img.shields.io/npm/v/@13onthecode/eslint-config?color=4b32c3&label=)](https://www.npmjs.com/package/@13onthecode/eslint-config)
+[![License](https://img.shields.io/npm/l/@13onthecode/eslint-config?color=4b32c3&label=)](LICENSE.md)
 
 English | [简体中文](README.CN.md)
 
-ESLint sharable configs
-
-It provides predefined configuration files for JavaScript, TypeScript, Node.js, and React projects, allowing you to selectively import the appropriate modules based on your project's needs
+It provides predefined configuration files for JavaScript, TypeScript, Node.js, and React projects, allowing selective importing of configurations based on project requirements
 </div>
 
 ## Features
