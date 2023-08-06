@@ -32,14 +32,13 @@
     "clean": "pnpm dlx rimraf node_modules dist"
   },
   "dependencies": {
-    "@eslint/js": "^8.45.0",
+    "@eslint/js": "^8.46.0",
     "eslint-plugin-i": "2.27.5-4",
     "eslint-plugin-perfectionist": "^1.5.1",
     "eslint-plugin-unicorn": "^47.0.0",
     "globals": "^13.20.0"
   },
   "peerDependencies": {
-    "node": ">=16",
     "eslint": ">=8.23.0"
   },
   "peerDependenciesMeta": {

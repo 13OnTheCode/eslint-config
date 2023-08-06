@@ -43,11 +43,10 @@
     "@13onthecode/eslint-config-typescript": "workspace:*"
   },
   "devDependencies": {
-    "eslint": "^8.45.0",
+    "eslint": "^8.46.0",
     "unbuild": "^1.2.1"
   },
   "peerDependencies": {
-    "node": ">=16",
     "eslint": ">=8.23.0"
   },
   "peerDependenciesMeta": {

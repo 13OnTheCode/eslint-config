@@ -25,18 +25,17 @@
     "access": "public"
   },
   "engines": {
-     "node": ">=16"
+    "node": ">=16"
   },
   "scripts": {
     "build": "unbuild",
     "clean": "pnpm dlx rimraf node_modules dist"
   },
   "dependencies": {
-    "eslint-import-resolver-node": "^0.3.7",
+    "eslint-import-resolver-node": "^0.3.8",
     "globals": "^13.20.0"
   },
   "peerDependencies": {
-    "node": ">=16",
     "eslint": ">=8.23.0"
   },
   "peerDependenciesMeta": {
