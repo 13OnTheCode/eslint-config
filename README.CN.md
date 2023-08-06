@@ -1,8 +1,6 @@
-<div align="center">
+# @13onthecode/eslint-config
 
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/137921275/258572401-482172f4-a813-41ae-9e42-d17176ae2893.svg" width="100" height="100" alt="ESLint" />
-
-# ESLint Config
 
 [![Version](https://img.shields.io/npm/v/@13onthecode/eslint-config?color=4b32c3&label=)](https://www.npmjs.com/package/@13onthecode/eslint-config)
 [![License](https://img.shields.io/npm/l/@13onthecode/eslint-config?color=4b32c3&label=)](LICENSE.md)
@@ -10,7 +8,6 @@
 [English](README.md) | 简体中文
 
 为 JavaScript、TypeScript、Node.js 和 React 项目提供了预定义的配置文件，可根据项目需求选择性地导入配置
-</div>
 
 ## Features
 
