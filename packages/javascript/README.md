@@ -1,6 +1,6 @@
 # @13onthecode/eslint-config-javascript
 
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/137921275/258572401-482172f4-a813-41ae-9e42-d17176ae2893.svg" width="100" height="100" alt="ESLint" />
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/137921275/258572401-482172f4-a813-41ae-9e42-d17176ae2893.svg" width="100" height="100" align="right" alt="ESLint" />
 
 [![Version](https://img.shields.io/npm/v/@13onthecode/eslint-config-javascript?color=4b32c3&label=)](https://www.npmjs.com/package/@13onthecode/eslint-config-javascript)
 [![License](https://img.shields.io/npm/l/@13onthecode/eslint-config-javascript?color=4b32c3&label=)](LICENSE.md)
