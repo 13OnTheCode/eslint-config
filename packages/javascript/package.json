@@ -39,7 +39,13 @@
     "globals": "^13.20.0"
   },
   "peerDependencies": {
-    "eslint": "^7.0.0 || ^8.0.0"
+    "node": ">=16",
+    "eslint": ">=8.23.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    }
   },
   "exports": {
     ".": {

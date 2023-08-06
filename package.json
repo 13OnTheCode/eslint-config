@@ -47,7 +47,13 @@
     "unbuild": "^1.2.1"
   },
   "peerDependencies": {
-    "node": ">=16"
+    "node": ">=16",
+    "eslint": ">=8.23.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    }
   },
   "exports": {
     ".": {
