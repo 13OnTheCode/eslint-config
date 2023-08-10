@@ -1,11 +1,13 @@
-import ESlintConfigJavascript from '@eslint/js'
-import ESlintPluginI from 'eslint-plugin-i'
-import ESlintPluginPerfectionist from 'eslint-plugin-perfectionist'
-import ESlintPluginUnicorn from 'eslint-plugin-unicorn'
+import eslintPluginJavascript from '@eslint/js'
+import eslintPluginImport from 'eslint-plugin-i'
+import eslintPluginPerfectionist from 'eslint-plugin-perfectionist'
+import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import globals from 'globals'
 
-const ESlintRules = {
-  ...ESlintConfigJavascript.configs.recommended.rules,
+import { defineEslintConfig, defineEslintRules } from '../utils'
+
+const eslintRulesForJavascript = defineEslintRules({
+  ...eslintPluginJavascript.configs.recommended.rules,
   'array-bracket-newline': [2, { multiline: true }],
   'array-bracket-spacing': 2,
   'array-callback-return': 2,
@@ -37,7 +39,18 @@ const ESlintRules = {
   'key-spacing': [2, { afterColon: true, beforeColon: false }],
   'keyword-spacing': 2,
   'linebreak-style': [2, 'unix'],
-  'lines-around-comment': [2, { allowBlockStart: true, beforeBlockComment: true, beforeLineComment: true }],
+  'lines-around-comment': [
+    2,
+    {
+      afterHashbangComment: true,
+      allowArrayStart: true,
+      allowBlockStart: true,
+      allowClassStart: true,
+      allowObjectStart: true,
+      beforeBlockComment: true,
+      beforeLineComment: true
+    }
+  ],
   'lines-between-class-members': [2, 'always', { exceptAfterSingleLine: true }],
   'new-cap': [2, { capIsNew: false, newIsCap: true, properties: true }],
   'new-parens': 2,
@@ -127,9 +140,9 @@ const ESlintRules = {
   'use-isnan': [2, { enforceForIndexOf: true, enforceForSwitchCase: true }],
   'wrap-iife': [2, 'any', { functionPrototypeMethods: true }],
   'yoda': [2, 'never']
-}
+})
 
-const ESlintPluginIRules = {
+const eslintRulesForImport = defineEslintRules({
   'import/consistent-type-specifier-style': [2, 'prefer-top-level'],
   'import/default': 2,
   'import/export': 2,
@@ -141,13 +154,12 @@ const ESlintPluginIRules = {
   'import/no-named-as-default': 2,
   'import/no-named-default': 2,
   'import/no-self-import': 2,
-  'import/no-unresolved': 0,
   'import/no-useless-path-segments': 2,
   'import/no-webpack-loader-syntax': 2
-}
+})
 
-const ESlintPluginUnicornRules = {
-  ...ESlintPluginUnicorn.configs.recommended.rules,
+const eslintRulesForUnicorn = defineEslintRules({
+  ...eslintPluginUnicorn.configs.recommended.rules,
   'unicorn/catch-error-name': 0,
   'unicorn/consistent-function-scoping': 0,
   'unicorn/expiring-todo-comments': 0,
@@ -155,10 +167,10 @@ const ESlintPluginUnicornRules = {
   'unicorn/import-style': 0,
   'unicorn/no-useless-undefined': 0,
   'unicorn/prevent-abbreviations': 0
-}
+})
 
-const ESlintPluginPerfectionistRules = {
-  ...ESlintPluginPerfectionist.configs['recommended-natural'].rules,
+const eslintRulesForPerfectionist = defineEslintRules({
+  ...eslintPluginPerfectionist.configs['recommended-natural'].rules,
   'perfectionist/sort-imports': [
     2,
     {
@@ -180,42 +192,46 @@ const ESlintPluginPerfectionistRules = {
       ]
     }
   ]
-}
+})
 
-export default {
-  files: ['**/*.js', '**/*.cjs', '**/*.mjs', '**/*.jsx'],
-  ignores: ['**/*.min.*', '**/dist/**', '**/build/**', '**/node_modules/**', '**/.*/**'],
-  languageOptions: {
-    globals: {
-      ...globals.browser,
-      ...globals.es5,
-      ...globals.es2015,
-      ...globals.es2017,
-      ...globals.es2020,
-      ...globals.es2021
-    },
-    parserOptions: {
-      ecmaFeatures: {
-        jsx: true
+export const eslintConfigForJavascript = defineEslintConfig([
+  {
+    files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
+    ignores: ['**/*.min.*'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.es5,
+        ...globals.es2015,
+        ...globals.es2017,
+        ...globals.es2020,
+        ...globals.es2021
       },
-      ecmaVersion: 'latest',
-      sourceType: 'module'
-    }
-  },
-  plugins: {
-    'import': ESlintPluginI,
-    'perfectionist': ESlintPluginPerfectionist,
-    'unicorn': ESlintPluginUnicorn
-  },
-  rules: {
-    ...ESlintRules,
-    ...ESlintPluginIRules,
-    ...ESlintPluginUnicornRules,
-    ...ESlintPluginPerfectionistRules
-  },
-  settings: {
-    'import/parsers': {
-      espree: ['.js', '.cjs', '.mjs', '.jsx']
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module'
+      }
+    },
+    plugins: {
+      'import': eslintPluginImport,
+      'perfectionist': eslintPluginPerfectionist,
+      'unicorn': eslintPluginUnicorn
+    },
+    rules: {
+      ...eslintRulesForJavascript,
+      ...eslintRulesForImport,
+      ...eslintRulesForUnicorn,
+      ...eslintRulesForPerfectionist
+    },
+    settings: {
+      'import/parsers': {
+        espree: ['.js', '.mjs', '.cjs']
+      },
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.mjs', '.cjs', '.json', '.node']
+        }
+      }
     }
   }
-}
+])

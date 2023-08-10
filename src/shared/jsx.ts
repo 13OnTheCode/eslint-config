@@ -1,8 +1,13 @@
-import ESlintPluginJsxA11y from 'eslint-plugin-jsx-a11y'
-import ESlintPluginReact from 'eslint-plugin-react'
-import ESlintPluginReactHooks from 'eslint-plugin-react-hooks'
+import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y'
+import eslintPluginReact from 'eslint-plugin-react'
+import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
 
-const ESlintPluginReactRules = {
+import { defineEslintConfig, defineEslintRules } from '../utils'
+
+import { eslintConfigForJavascript } from './javascript'
+import { eslintConfigForNode } from './node'
+
+const eslintRulesForReact = defineEslintRules({
   'react/boolean-prop-naming': 2,
   'react/button-has-type': 2,
   'react/hook-use-state': [2, { allowDestructuredState: true }],
@@ -54,42 +59,58 @@ const ESlintPluginReactRules = {
   'react/self-closing-comp': 2,
   'react/style-prop-object': 2,
   'react/void-dom-elements-no-children': 2
-}
+})
 
-const ESlintPluginReactHooksRules = {
-  'react-hooks/exhaustive-deps': 'error',
-  'react-hooks/rules-of-hooks': 'error'
-}
+const eslintRulesForReactHooks = defineEslintRules({
+  'react-hooks/exhaustive-deps': 2,
+  'react-hooks/rules-of-hooks': 2
+})
 
-const ESlintPluginJsxA11yRules = {
-  ...ESlintPluginJsxA11y.configs.recommended.rules,
+const eslintRulesForJsxA11y = defineEslintRules({
+  ...eslintPluginJsxA11y.configs.recommended.rules,
   'jsx-a11y/no-aria-hidden-on-focusable': 2,
   'jsx-a11y/prefer-tag-over-role': 2
-}
+})
 
-export default {
-  files: ['**/*.jsx', '**/*.tsx'],
-  ignores: ['**/dist/**', '**/build/**', '**/node_modules/**', '**/.*/**'],
-  languageOptions: {
-    parserOptions: {
-      ecmaFeatures: {
-        jsx: true
+export const eslintConfigForJsx = defineEslintConfig([
+  {
+    files: ['**/*.jsx'],
+    languageOptions: {
+      globals: {
+        ...eslintConfigForJavascript[0]?.languageOptions?.globals,
+        ...eslintConfigForNode[0]?.languageOptions?.globals
+      },
+      parserOptions: {
+        ...eslintConfigForJavascript[0]?.languageOptions?.parserOptions,
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
+    },
+    plugins: {
+      ...eslintConfigForJavascript[0]?.plugins,
+      'jsx-a11y': eslintPluginJsxA11y,
+      'react': eslintPluginReact,
+      'react-hooks': eslintPluginReactHooks
+    },
+    rules: {
+      ...eslintConfigForJavascript[0]?.rules,
+      ...eslintRulesForJsxA11y,
+      ...eslintRulesForReact,
+      ...eslintRulesForReactHooks
+    },
+    settings: {
+      'import/parsers': {
+        espree: ['.js', '.mjs', '.cjs', '.jsx']
+      },
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.mjs', '.cjs', '.jsx', '.json', '.node']
+        }
+      },
+      'react': {
+        version: 'detect'
       }
     }
-  },
-  plugins: {
-    'jsx-a11y': ESlintPluginJsxA11y,
-    'react': ESlintPluginReact,
-    'react-hooks': ESlintPluginReactHooks
-  },
-  rules: {
-    ...ESlintPluginReactRules,
-    ...ESlintPluginReactHooksRules,
-    ...ESlintPluginJsxA11yRules
-  },
-  settings: {
-    react: {
-      version: 'detect'
-    }
   }
-}
+])

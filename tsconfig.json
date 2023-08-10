@@ -1,0 +1,9 @@
+{
+  "extends": "@13onthecode/typescript-config/node",
+  "include": ["src"],
+  "files": ["globals.d.ts"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "moduleResolution": "bundler"
+  }
+}
