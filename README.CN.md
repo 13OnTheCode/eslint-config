@@ -7,19 +7,25 @@
 
 [English](README.md) | 简体中文
 
-为 JavaScript、TypeScript、Node.js 和 React 项目提供了预定义的配置文件，可根据项目需求选择性地导入配置
+一个通用的 ESLint 配置库，它遵循最佳实践，为 JavaScript、TypeScript、Node.js 和 React 项目提供基础配置
 
 ## Features
 
-- 固执己见, 但同时保持合理的默认配置和最佳实践
-- 按需导入适合你项目的配置文件
-- 自动修复格式（旨在独立使用，无需使用 Prettier）
-- 主流常用 ESLint 插件集成
+- 遵循最佳实践，实现准确可靠的代码检查
+- 灵活配置选项，适应不同项目需求
+- 自动修复格式，无需使用 Prettier
+- 主流插件集成，为项目提供广泛的功能拓展
+- 持续维护更新，支持最新的版本和特性
 
 ## Prerequisites
 
-- ESLint 版本需要 8.23.0 或更高
-- 使用 ESLint Flat Config
+### Node.js
+- 版本 >= 16.0.0
+- ESM 项目
+
+### ESLint
+- 版本 >= 8.23.0
+- 使用 Flat Config
 
 ## Install
 
@@ -29,33 +35,79 @@ npm install @13onthecode/eslint-config --save-dev
 
 ## Usage
 
-创建 ESLint 配置文件 `eslint.config.js`，并根据你的项目需求导入所需的预设配置：
+首先，确保你正在使用 ESM（在你的 `package.json` 中设置 `"type": "module"`）
+
+然后，在项目根目录中创建 ESLint 配置文件 `eslint.config.js`，根据你的项目需求导入所需的预设配置：
+
+### Base
+
+用于纯 JavaScript 和 TypeScript 项目的预设配置，不包括 Node 环境以及 `.jsx` 和 `.tsx` 文件
 
 ```javascript
-import { javascript, typescript, react, node } from '@13onthecode/eslint-config'
+import { base } from '@13onthecode/eslint-config'
 
 export default [
-  node,
-  react,
-  javascript,
-  typescript
+  ...base
 ]
 ```
 
-## Packages
+### Node
 
-该包是以下共享 ESLint 配置包的集合：
+此配置继承了 [Base](#base) 配置
 
-- [`@13onthecode/eslint-config-javascript`](https://github.com/13OnTheCode/eslint-config/tree/main/packages/javascript)
-- [`@13onthecode/eslint-config-typescript`](https://github.com/13OnTheCode/eslint-config/tree/main/packages/typescript)
-- [`@13onthecode/eslint-config-node`](https://github.com/13OnTheCode/eslint-config/tree/main/packages/node)
-- [`@13onthecode/eslint-config-react`](https://github.com/13OnTheCode/eslint-config/tree/main/packages/react)
+用于 Node 项目的预设配置，为 JavaScript 和 TypeScript 文件提供了 Node 环境的支持
+
+```javascript
+import { node } from '@13onthecode/eslint-config'
+
+export default [
+  ...node
+]
+```
+
+### React
+
+此配置继承了 [Node](#node) 配置
+
+用于 React 项目的预设配置，提供了 `.jsx` 和 `.tsx` 文件的支持
+
+```javascript
+import { react } from '@13onthecode/eslint-config'
+
+export default [
+  ...react
+]
+```
+
+## Override
+
+要覆盖某些配置，只需将您想要的配置连接在一起，例如：
+
+```javascript
+import { base } from '@13onthecode/eslint-config'
+
+export default [
+  ...base,
+  {
+    files: ["src/**/*.js"],
+    rules: {
+      "no-console": "off"
+    }
+  }
+]
+```
 
 ## FAQ
 
 ### 为什么不使用 Prettier？
 - [《Why I don't use Prettier》](https://antfu.me/posts/why-not-prettier)
 - [《The Blurry Line Between Formatting and Style》](https://blog.joshuakgoldberg.com/the-blurry-line-between-formatting-and-style/)
+
+### 为什么不使用 CommonJS?
+- [《Get Ready For ESM》](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
+
+## Check Also
+- [`@13onthecode/typescript-config`](https://github.com/13OnTheCode/typescript-config/tree/main)
 
 ## License
 

@@ -7,19 +7,25 @@
 
 English | [简体中文](README.CN.md)
 
-It provides predefined configuration files for JavaScript, TypeScript, Node.js, and React projects, allowing selective importing of configurations based on project requirements
+A versatile ESLint configuration library that follows best practices, offering foundational setups for JavaScript, TypeScript, Node.js, and React projects
 
 ## Features
 
-- Opinionated, yet maintaining reasonable defaults and best practices
-- Selectively import the configuration files that fit your project
-- Auto fix for formatting (aimed to be used standalone without Prettier)
-- Integration with other popular ESLint plugins out of the box
+- Follow best practices to achieve accurate and reliable code inspection
+- Flexible configuration options to cater to different project needs
+- Automatically fixing formatting without the need for Prettier
+- Integrating mainstream plugins to provide extensive functionality enhancements for projects
+- Continuously maintained and updated to support the latest versions and features
 
 ## Prerequisites
 
-- ESLint version 8.23.0 or higher
-- ESLint Flat Config to be enabled and used
+### Node.js
+- Version >= 16.0.0
+- ESM Project
+
+### ESLint
+- Version >= 8.23.0
+- Using Flat Config
 
 ## Install
 
@@ -29,33 +35,79 @@ npm install @13onthecode/eslint-config --save-dev
 
 ## Usage
 
-Create ESLint configuration file `eslint.config.js` and import the preset configurations that you need based on your project requirements:
+First, ensure you're using ESM (set `"type": "module"` in your `package.json`)
+
+Then, create ESLint configuration file `eslint.config.js` in the project's root directory, and import the preset configurations you need based on your project requirements:
+
+### Base
+
+Preset configuration for pure JavaScript and TypeScript projects, excluding Node environment and `.jsx` and `.tsx` files
 
 ```javascript
-import { javascript, typescript, react, node } from '@13onthecode/eslint-config'
+import { base } from '@13onthecode/eslint-config'
 
 export default [
-  node,
-  react,
-  javascript,
-  typescript
+  ...base
 ]
 ```
 
-## Packages
+### Node
 
-This package is a collection of the following shareable ESLint configurations:
+This configuration extends the [Base](#base) configuration
 
-- [`@13onthecode/eslint-config-javascript`](https://github.com/13OnTheCode/eslint-config/tree/main/packages/javascript)
-- [`@13onthecode/eslint-config-typescript`](https://github.com/13OnTheCode/eslint-config/tree/main/packages/typescript)
-- [`@13onthecode/eslint-config-node`](https://github.com/13OnTheCode/eslint-config/tree/main/packages/node)
-- [`@13onthecode/eslint-config-react`](https://github.com/13OnTheCode/eslint-config/tree/main/packages/react)
+Preset configuration for Node.js projects, providing Node environment support for JavaScript and TypeScript files
+
+```javascript
+import { node } from '@13onthecode/eslint-config'
+
+export default [
+  ...node
+]
+```
+
+### React
+
+This configuration extends the [Node](#node) configuration
+
+Preset configuration for React projects, providing support for `.jsx` and `.tsx` files
+
+```javascript
+import { react } from '@13onthecode/eslint-config'
+
+export default [
+  ...react
+]
+```
+
+## Override
+
+To override things, just concat the config you want together, for example:
+
+```javascript
+import { base } from '@13onthecode/eslint-config'
+
+export default [
+  ...base,
+  {
+    files: ["src/**/*.js"],
+    rules: {
+      "no-console": "off"
+    }
+  }
+]
+```
 
 ## FAQ
 
 ### Why not Prettier?
 - [《Why I don't use Prettier》](https://antfu.me/posts/why-not-prettier)
 - [《The Blurry Line Between Formatting and Style》](https://blog.joshuakgoldberg.com/the-blurry-line-between-formatting-and-style/)
+
+### Why not CommonJS?
+- [《Get Ready For ESM》](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
+
+## Check Also
+- [`@13onthecode/typescript-config`](https://github.com/13OnTheCode/typescript-config/tree/main)
 
 ## License
 
