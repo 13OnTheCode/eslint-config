@@ -1,7 +1,7 @@
 {
   "name": "@13onthecode/eslint-config",
   "description": "ESLint shareable configurations",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "type": "module",
   "license": "MIT",
   "homepage": "https://github.com/13OnTheCode/eslint-config#readme",
@@ -65,16 +65,8 @@
       "optional": true
     }
   },
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
   "files": [
     "dist",
     "LICENSE.md",
