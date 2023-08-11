@@ -1,1 +1,1 @@
-export { eslintConfigForNode as default } from './dist/index.mjs'
+export { node as default } from './dist/index.mjs'
