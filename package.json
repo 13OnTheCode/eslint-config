@@ -68,11 +68,7 @@
   "exports": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "LICENSE.md",
-    "CHANGELOG.md",
-    "README.md",
-    "README.CN.md"
+    "dist"
   ],
   "unbuild": {
     "rollup": {
