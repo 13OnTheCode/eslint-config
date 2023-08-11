@@ -37,6 +37,7 @@ const eslintRulesForReact = defineEslintRules({
   'react/jsx-one-expression-per-line': [2, { allow: 'single-child' }],
   'react/jsx-pascal-case': 2,
   'react/jsx-tag-spacing': 2,
+  'react/jsx-uses-react': 0,
   'react/jsx-uses-vars': 2,
   'react/jsx-wrap-multilines': [
     2,
@@ -56,6 +57,7 @@ const eslintRulesForReact = defineEslintRules({
   'react/no-invalid-html-attribute': 2,
   'react/no-unescaped-entities': 2,
   'react/no-unknown-property': 2,
+  'react/react-in-jsx-scope': 0,
   'react/self-closing-comp': 2,
   'react/style-prop-object': 2,
   'react/void-dom-elements-no-children': 2
