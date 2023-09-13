@@ -30,32 +30,31 @@
   "engines": {
     "node": ">=16"
   },
-  "packageManager": "pnpm@8.6.11",
+  "packageManager": "pnpm@8.7.5",
   "scripts": {
-    "build": "unbuild",
-    "stub": "unbuild --stub",
+    "build": "unbuild --minify",
     "clean": "pnpm dlx rimraf node_modules dist"
   },
   "dependencies": {
-    "@eslint/js": "^8.46.0",
-    "@typescript-eslint/eslint-plugin": "^6.2.1",
-    "@typescript-eslint/parser": "^6.2.1",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-i": "2.28.0-2",
+    "@eslint/js": "^8.49.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-i": "2.28.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-perfectionist": "^1.5.1",
-    "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-perfectionist": "^2.1.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "^48.0.1",
-    "globals": "^13.20.0"
+    "globals": "^13.21.0"
   },
   "devDependencies": {
-    "@13onthecode/typescript-config": "^0.0.4",
+    "@13onthecode/typescript-config": "^0.0.5",
     "@types/eslint": "^8.44.2",
-    "@types/node": "^20.4.8",
-    "eslint": "^8.46.0",
-    "typescript": "^5.1.6",
-    "unbuild": "^1.2.1"
+    "@types/node": "^20.6.0",
+    "eslint": "^8.49.0",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0"
   },
   "peerDependencies": {
     "eslint": ">=8.23.0"
@@ -66,15 +65,8 @@
     }
   },
   "exports": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
-  ],
-  "unbuild": {
-    "rollup": {
-      "esbuild": {
-        "minify": true
-      }
-    }
-  }
+  ]
 }
