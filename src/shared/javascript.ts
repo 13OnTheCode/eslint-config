@@ -129,7 +129,7 @@ const eslintRulesForJavascript = defineEslintRules({
   'semi-spacing': [2, { after: true, before: false }],
   'semi-style': [2, 'last'],
   'space-before-blocks': [2, 'always'],
-  'space-before-function-paren': [2, 'never'],
+  'space-before-function-paren': [2, { anonymous: 'always', asyncArrow: 'always', named: 'never' }],
   'space-in-parens': [2, 'never'],
   'space-infix-ops': 2,
   'space-unary-ops': [2, { nonwords: false, words: true }],
