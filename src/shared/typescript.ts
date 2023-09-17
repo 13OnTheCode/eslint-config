@@ -36,7 +36,7 @@ function createEslintRulesForTypescript() {
     '@typescript-eslint/array-type': 2,
     '@typescript-eslint/await-thenable': 2,
     '@typescript-eslint/consistent-generic-constructors': 2,
-    '@typescript-eslint/consistent-type-definitions': 2,
+    '@typescript-eslint/consistent-type-definitions': 0,
     '@typescript-eslint/consistent-type-exports': 2,
     '@typescript-eslint/consistent-type-imports': 2,
     '@typescript-eslint/method-signature-style': 2,
