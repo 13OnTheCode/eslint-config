@@ -1,7 +1,7 @@
 {
   "name": "@13onthecode/eslint-config",
   "description": "ESLint shareable configurations",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "type": "module",
   "license": "MIT",
   "homepage": "https://github.com/13OnTheCode/eslint-config#readme",
@@ -30,7 +30,7 @@
   "engines": {
     "node": ">=16"
   },
-  "packageManager": "pnpm@8.7.5",
+  "packageManager": "pnpm@8.11.0",
   "scripts": {
     "build": "unbuild --minify",
     "clean": "pnpm dlx rimraf node_modules dist"
