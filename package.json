@@ -1,7 +1,7 @@
 {
   "name": "@13onthecode/eslint-config",
   "description": "ESLint shareable configurations",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "type": "module",
   "license": "MIT",
   "homepage": "https://github.com/13OnTheCode/eslint-config#readme",
