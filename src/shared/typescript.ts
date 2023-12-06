@@ -66,7 +66,6 @@ const eslintRulesForTypescript = createEslintRulesForTypescript()
 export const eslintConfigForTypescript = defineEslintConfig([
   {
     files: ['**/*.ts', '**/*.mts', '**/*.cts'],
-    ignores: ['**/*.d.*'],
     languageOptions: {
       globals: {
         ...eslintConfigForJavascript[0]?.languageOptions?.globals

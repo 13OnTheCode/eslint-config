@@ -16,10 +16,7 @@ export const eslintConfigForNode = defineEslintConfig([
         '**/*.cts'
       ] : []
     ],
-    ignores: [
-      '**/*.min.?(m|c)js',
-      ...hasTsConfigFile ? ['**/*.d.?(m|c)ts'] : []
-    ],
+    ignores: ['**/*.min.*'],
     languageOptions: {
       globals: {
         ...globals.nodeBuiltin
